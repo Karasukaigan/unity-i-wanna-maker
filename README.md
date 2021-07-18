@@ -6,5 +6,6 @@
 <img src="https://github.com/Karasukaigan/unity-i-wanna-maker/blob/main/Screenshots/Splash%20Screen.png" alt="Splash Screen" height="400">  
 <img src="https://github.com/Karasukaigan/unity-i-wanna-maker/blob/main/Screenshots/Select%20Archive.png" alt="Select Archive" height="400">  
 <img src="https://github.com/Karasukaigan/unity-i-wanna-maker/blob/main/Screenshots/Game%20Scene.png" alt="Game Scene" height="400">  
+<img src="https://github.com/Karasukaigan/unity-i-wanna-maker/blob/main/Screenshots/Level.png" alt="Level" height="400">  
   
 目前版本是1.1.0，给所有脚本添加了注释。
