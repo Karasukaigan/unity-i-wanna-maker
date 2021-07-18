@@ -5,8 +5,7 @@ using static Platformer.Core.Simulation;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// DeathZone components mark a collider which will schedule a
-    /// PlayerEnteredDeathZone event when the player enters the trigger.
+    /// DeathZone的类，若要使用，应当在DeathZone空物体上添加该脚本以及碰撞器。
     /// </summary>
     public class DeathZone : MonoBehaviour
     {

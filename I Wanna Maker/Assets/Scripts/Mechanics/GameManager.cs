@@ -5,7 +5,7 @@ using Platformer.Model;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// It has the same function as GameController, but it is no longer used.
+    /// 相当于GameController。但该项目中不使用。
     /// </summary> 
     public class GameManager : MonoBehaviour
     {

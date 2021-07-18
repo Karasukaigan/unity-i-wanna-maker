@@ -6,9 +6,7 @@ using UnityEngine;
 namespace Platformer.Core
 {
     /// <summary>
-    /// The Simulation class implements the discrete event simulator pattern.
-    /// Events are pooled, with a default capacity of 10 instances.
-    /// It comes from the Platformer Microgame template.
+    /// Simulation类实现了离散事件模拟，事件池默认容量为10。这个类来自平台游戏Microgame模板。
     /// </summary>
     public static partial class Simulation
     {
@@ -17,7 +15,7 @@ namespace Platformer.Core
         static Dictionary<System.Type, Stack<Event>> eventPools = new Dictionary<System.Type, Stack<Event>>();
 
         /// <summary>
-        /// Create a new event of type T and return it, but do not schedule it.
+        /// 创建一个T类型的新事件，并将其返回。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -26,7 +24,7 @@ namespace Platformer.Core
             Stack<Event> pool;
             if (!eventPools.TryGetValue(typeof(T), out pool))
             {
-                pool = new Stack<Event>(10); //Set event pool capacity
+                pool = new Stack<Event>(10); //事件池容量为10
                 pool.Push(new T());
                 eventPools[typeof(T)] = pool;
             }
@@ -37,7 +35,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Clear all pending events and reset the tick to 0.
+        /// 清除所有未决事件并将tick重置为0。
         /// </summary>
         public static void Clear()
         {
@@ -45,11 +43,11 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Schedule an event for a future tick, and return it.
+        /// 安排一个事件，并将其返回。
         /// </summary>
         /// <returns>The event.</returns>
         /// <param name="tick">Tick.</param>
-        /// <typeparam name="T">The event type parameter.</typeparam>
+        /// <typeparam name="T">事件类型参数。</typeparam>
         static public T Schedule<T>(float tick = 0) where T : Event, new()
         {
             var ev = New<T>();
@@ -59,11 +57,11 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Reschedule an existing event for a future tick, and return it.
+        /// 重新安排现有事件，并将其返回。
         /// </summary>
-        /// <returns>The event.</returns>
+        /// <returns>事件。</returns>
         /// <param name="tick">Tick.</param>
-        /// <typeparam name="T">The event type parameter.</typeparam>
+        /// <typeparam name="T">事件类型参数。</typeparam>
         static public T Reschedule<T>(T ev, float tick) where T : Event, new()
         {
             ev.tick = Time.time + tick;
@@ -72,7 +70,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Return the simulation model instance for a class.
+        /// 返回类的仿真模型实例。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         static public T GetModel<T>() where T : class, new()
@@ -81,7 +79,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Set a simulation model instance for a class.
+        /// 为一个类设置一个仿真模型实例。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         static public void SetModel<T>(T instance) where T : class, new()
@@ -90,7 +88,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Destroy the simulation model instance for a class.
+        /// 销毁类的仿真模型实例。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         static public void DestroyModel<T>() where T : class, new()
@@ -99,9 +97,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Tick the simulation. Returns the count of remaining events.
-        /// If remaining events is zero, the simulation is finished unless events are
-        /// injected from an external system via a Schedule() call.
+        /// Tick模拟。返回剩余事件的数量。如果剩余事件为零，则模拟结束，除非通过Schedule()调用，从外部系统注入事件。
         /// </summary>
         /// <returns></returns>
         static public int Tick()
@@ -115,7 +111,7 @@ namespace Platformer.Core
                 ev.ExecuteEvent();
                 if (ev.tick > tick)
                 {
-                    //event was rescheduled, so do not return it to the pool.
+                    //事件已重新安排，因此不将其返回到事件池中。
                 }
                 else
                 {
@@ -127,7 +123,6 @@ namespace Platformer.Core
                     }
                     catch (KeyNotFoundException)
                     {
-                        //This really should never happen inside a production build.
                         Debug.LogError($"No Pool for: {ev.GetType()}");
                     }
                 }

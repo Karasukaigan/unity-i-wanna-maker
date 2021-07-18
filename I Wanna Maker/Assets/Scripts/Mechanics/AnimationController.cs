@@ -5,33 +5,38 @@ using UnityEngine;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// AnimationController integrates physics and animation. It is generally used for simple enemy animation.
+    /// AnimationController集成了对物理和动画的控制，通常用于简单的敌人动画。未使用。
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
     public class AnimationController : KinematicObject
     {
         /// <summary>
-        /// Max horizontal speed.
+        /// 最大水平速度。
         /// </summary>
+        [Tooltip("最大水平速度。")]
         public float maxSpeed = 5;
         /// <summary>
-        /// Max jump velocity
+        /// 最大跳跃速度。
         /// </summary>
+        [Tooltip("最大跳跃速度。")]
         public float jumpTakeOffSpeed = 7;
 
         /// <summary>
-        /// Used to indicated desired direction of travel.
+        /// 行进方向。
         /// </summary>
+        [Tooltip("行进方向。")]
         public Vector2 move;
 
         /// <summary>
-        /// Set to true to initiate a jump.
+        /// 值为True时，跳跃。
         /// </summary>
+        [Tooltip("跳跃。")]
         public bool jump;
 
         /// <summary>
-        /// Set to true to set the current jump velocity to zero.
+        /// 值为True时，将当前跳跃速度设置为零。
         /// </summary>
+        [Tooltip("是否停止跳跃。")]
         public bool stopJump;
 
         SpriteRenderer spriteRenderer;

@@ -3,8 +3,7 @@ using UnityEngine;
 namespace Platformer.Core
 {
     /// <summary>
-    /// Fuzzy provides methods for using values +- an amount of random deviation, or fuzz.
-    /// It comes from the Platformer Microgame template.
+    /// Fuzzy提供了模糊值所需的方法。这个类来自平台游戏Microgame模板。
     /// </summary>
     static class Fuzzy
     {

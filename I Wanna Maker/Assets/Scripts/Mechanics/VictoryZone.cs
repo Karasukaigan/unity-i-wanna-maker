@@ -5,7 +5,8 @@ using static Platformer.Core.Simulation;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// Marks a trigger as a VictoryZone, usually used to end the current game level.
+    /// 将触发器标记为VictoryZone，通常用于结束当前游戏关卡。
+    /// 这个类来自平台游戏Microgame模板。未使用。
     /// </summary>
     public class VictoryZone : MonoBehaviour
     {

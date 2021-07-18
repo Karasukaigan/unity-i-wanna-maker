@@ -4,8 +4,7 @@ using Platformer.Model;
 namespace Platformer.Gameplay
 {
     /// <summary>
-    /// This event is fired when user input should be enabled.
-    /// It comes from the Platformer Microgame template. No longer used.
+    /// 当应启用用户输入时触发此事件，已弃用。
     /// </summary>
     public class EnablePlayerInput : Simulation.Event<EnablePlayerInput>
     {
@@ -16,7 +15,6 @@ namespace Platformer.Gameplay
             //var player = model.player;
             //player.controlEnabled = true;
             //player.Show();
-            
         }
     }
 }

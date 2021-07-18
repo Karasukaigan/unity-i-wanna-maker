@@ -6,27 +6,26 @@ using static Platformer.Core.Simulation;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// This class contains the data required for implementing token collection mechanics.
-    /// It does not perform animation of the token, this is handled in a batch by the 
-    /// TokenController in the scene.
+    /// 此类包含实现金币收集机制所需的数据。
+    /// 这个类来自平台游戏Microgame模板。未使用。
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class TokenInstance : MonoBehaviour
     {
         public AudioClip tokenCollectAudio;
-        [Tooltip("If true, animation will start at a random position in the sequence.")]
+        [Tooltip("如果为true，动画将从序列中的随机位置开始。")]
         public bool randomAnimationStartTime = false;
-        [Tooltip("List of frames that make up the animation.")]
+        [Tooltip("构成动画帧列表。")]
         public Sprite[] idleAnimation, collectedAnimation;
 
         internal Sprite[] sprites = new Sprite[0];
 
         internal SpriteRenderer _renderer;
 
-        //unique index which is assigned by the TokenController in a scene.
+        //由TokenController在场景中分配的唯一索引。
         internal int tokenIndex = -1;
         internal TokenController controller;
-        //active frame in animation, updated by the controller.
+        //动画中的活动帧，由控制器更新。
         internal int frame = 0;
         internal bool collected = false;
 
@@ -40,7 +39,7 @@ namespace Platformer.Mechanics
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            //only exectue OnPlayerEnter if the player collides with this token.
+            //仅当玩家与此金币发生碰撞时才执行OnPlayerEnter。
             var player = other.gameObject.GetComponent<PlayerController>();
             if (player != null) OnPlayerEnter(player);
         }
@@ -48,12 +47,11 @@ namespace Platformer.Mechanics
         void OnPlayerEnter(PlayerController player)
         {
             if (collected) return;
-            //disable the gameObject and remove it from the controller update list.
+            //禁用游戏对象并将其从控制器更新列表中删除。
             frame = 0;
             sprites = collectedAnimation;
             if (controller != null)
                 collected = true;
-            //send an event into the gameplay system to perform some behaviour.
             var ev = Schedule<PlayerTokenCollision>();
             ev.token = this;
             ev.player = player;

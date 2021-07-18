@@ -3,48 +3,69 @@
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// Implements game physics for some in game entity.
+    /// 用来处理运动物体，为其实现物理效果，通常用于玩家。
     /// </summary>
     public class KinematicObject : MonoBehaviour
     {
         /// <summary>
-        /// The minimum normal (dot product) considered suitable for the entity sit on.
+        /// 允许实体站立的最小地面法线长度（点积）。
         /// </summary>
         public float minGroundNormalY = .65f;
 
         /// <summary>
-        /// A custom gravity coefficient applied to this entity.
+        /// 应用于该实体的自定义重力系数。
         /// </summary>
         public float gravityModifier = 10f;
 
         /// <summary>
-        /// The current velocity of the entity.
+        /// 实体当前速度。
         /// </summary>
         public Vector2 velocity;
 
         /// <summary>
-        /// Is the entity currently sitting on a surface?
+        /// 实体当前是否位于表面上？
         /// </summary>
         /// <value></value>
         public bool IsGrounded { get; private set; }
 
         protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
+        /// <summary>
+        /// 该实体的2D刚体。
+        /// </summary>
         protected Rigidbody2D body;
         protected ContactFilter2D contactFilter;
         protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 
+        /// <summary>
+        /// 最小移动距离。
+        /// </summary>
         protected const float minMoveDistance = 0.001f;
+        /// <summary>
+        /// 外壳半径。
+        /// </summary>
         protected const float shellRadius = 0.01f;
 
-        public bool onVine = false; //Is it on the vine?
-        public float vinePosition; //The coordinates used to determine whether to leave the vine
-        protected bool isVineJump = false; //Does the jump occur on the vine?
-
-        public bool inWater = false; //Is it in the water?
+        /// <summary>
+        /// 是否在藤蔓上。
+        /// </summary>
+        public bool onVine = false;
+        /// <summary>
+        /// 实体在藤蔓上时的坐标。
+        /// </summary>
+        public float vinePosition;
+        /// <summary>
+        /// 跳跃是否发生在藤蔓上。
+        /// </summary>
+        protected bool isVineJump = false;
 
         /// <summary>
-        /// Bounce the object's vertical velocity.
+        /// 是否在水中。
+        /// </summary>
+        public bool inWater = false;
+
+        /// <summary>
+        /// 以物体的垂直速度反弹。
         /// </summary>
         /// <param name="value"></param>
         public void Bounce(float value)
@@ -53,7 +74,7 @@ namespace Platformer.Mechanics
         }
 
         /// <summary>
-        /// Bounce the objects velocity in a direction.
+        /// 以指定速度反弹。
         /// </summary>
         /// <param name="dir"></param>
         public void Bounce(Vector2 dir)
@@ -93,19 +114,21 @@ namespace Platformer.Mechanics
 
         protected virtual void FixedUpdate()
         {
-            //if already falling, fall faster than the jump speed, otherwise use normal gravity.
+            //如果已经下落
             if (velocity.y < 0)
             {
-                //On vines or in water, the fall will slow down.
+                //如果在藤蔓上或者在水中时，以固定速度缓慢下落
                 if (onVine || inWater)
                 {
                     velocity.y = -3f;
                 }
+                //以指定的重力系数下落
                 else
                 {
                     velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
                 }
             }
+            //以重力系数减速上升
             else
                 velocity += Physics2D.gravity * Time.deltaTime;
 
@@ -133,17 +156,17 @@ namespace Platformer.Mechanics
 
             if (distance > minMoveDistance)
             {
-                //check if we hit anything in current direction of travel.
+                //检查是否在当前行进方向上碰到东西
                 var count = body.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
                 for (var i = 0; i < count; i++)
                 {
                     var currentNormal = hitBuffer[i].normal;
 
-                    //is this surface flat enough to land on?
+                    //判断表面是否足够平坦可以着陆
                     if (currentNormal.y > minGroundNormalY)
                     {
                         IsGrounded = true;
-                        //if moving up, change the groundNormal to new surface normal.
+                        //如果向上移动，则将groundNormal更改为新的表面法线
                         if (yMovement)
                         {
                             groundNormal = currentNormal;
@@ -153,26 +176,26 @@ namespace Platformer.Mechanics
 
                     if (IsGrounded)
                     {
-                        //how much of our velocity aligns with surface normal?
+                        //速度有多少与表面法线一致？
                         var projection = Vector2.Dot(velocity, currentNormal);
                         if (projection < 0)
                         {
-                            //slower velocity if moving against the normal (up a hill).
+                            //如果逆法线移动（上山），则速度较慢
                             velocity = velocity - projection * currentNormal;
                         }
                     }
-                    //If you hit something upwards, the vertical speed will return to zero.
+                    //如果向上过程中碰到东西，则垂直方向速度归零
                     else if (yMovement)
                     {
                         velocity.y = Mathf.Min(velocity.y, 0);
                     }
                     else
                     {
-                        //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
+                        //在空中撞到了什么东西，则归零水平速度。
                         velocity.x *= 0;
-                        //velocity.y = Mathf.Min(velocity.y, 0); //Comment out, with non-return to zero vertical speed
                     }
-                    //remove shellDistance from actual move distance.
+                    
+                    //从实际移动距离中删除shellDistance。
                     var modifiedDistance = hitBuffer[i].distance - shellRadius;
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
                 }

@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using Platformer.Model;
 using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
-
+    /// <summary>
+    /// 水的类，通常被添加在判断玩家是出水还是入水的空物体（InWaterDetect和OutWaterDetect）上。
+    /// </summary>
     public class Water : MonoBehaviour
     {
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();

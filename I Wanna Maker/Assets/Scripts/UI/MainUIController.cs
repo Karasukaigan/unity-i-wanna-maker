@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Platformer.UI
 {
     /// <summary>
-    /// A simple controller for switching between UI panels.
+    /// 用于在游戏和UI面板之间切换。
+    /// 这个类来自平台游戏Microgame模板。
     /// </summary>
     public class MainUIController : MonoBehaviour
     {

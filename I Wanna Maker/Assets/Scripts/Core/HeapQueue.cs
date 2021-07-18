@@ -4,8 +4,7 @@ using System.Collections.Generic;
 namespace Platformer.Core
 {
     /// <summary>
-    /// HeapQueue provides a queue collection that is always ordered.
-    /// It comes from the Platformer Microgame template.
+    /// HeapQueue提供了一个始终有序的队列集合。这个类来自平台游戏Microgame模板。
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class HeapQueue<T> where T : IComparable<T>
@@ -33,18 +32,13 @@ namespace Platformer.Core
 
         public void Push(T item)
         {
-            //add item to end of tree to extend the list.
-            items.Add(item);
-            //find correct position for new item.
-            SiftDown(0, items.Count - 1);
+            items.Add(item); //将项目添加到树的末尾
+            SiftDown(0, items.Count - 1); //找到新项目的正确位置
         }
 
         public T Pop()
         {
-
-            //if there are more than 1 items, returned item will be first in tree.
-            //then, add last item to front of tree, shrink the list
-            //and find correct index in tree for first item.
+            //如果有超过一个项目，返回的项目将在树中排在第一位。然后将最后一项添加到树的前面，缩小列表并在树中为第一项找到正确的索引
             T item;
             var last = items[items.Count - 1];
             items.RemoveAt(items.Count - 1);
@@ -66,17 +60,17 @@ namespace Platformer.Core
 
         void SiftDown(int startpos, int pos)
         {
-            //preserve the newly added item.
-            var newitem = items[pos];
+            //保持新添加的项目
+            var newitem = items[pos]; 
             while (pos > startpos)
             {
-                //find parent index in binary tree.
+                //在二叉树中找到父索引
                 var parentpos = (pos - 1) >> 1;
                 var parent = items[parentpos];
-                //if new item precedes or equal to parent, pos is new item position.
+                //如果新项目在父项之前或等于父项，则pos是新项目的位置
                 if (Compare(parent, newitem) <= 0)
                     break;
-                //else move parent into pos, then repeat for grand parent.
+                //否则将父项移动到pos，然后重复父项
                 items[pos] = parent;
                 pos = parentpos;
             }
@@ -87,25 +81,25 @@ namespace Platformer.Core
         {
             var endpos = items.Count;
             var startpos = 0;
-            //preserve the inserted item
+            //保留插入的项目
             var newitem = items[0];
             var childpos = 1;
             var pos = 0;
-            //find child position to insert into binary tree
+            //找到要插入二叉树的子位置
             while (childpos < endpos)
             {
-                //get right branch
+                //得到正确的分支
                 var rightpos = childpos + 1;
-                //if right branch should precede left branch, move right branch up the tree
+                //如果右分支应该在左分支之前，则将右分支向上移动
                 if (rightpos < endpos && Compare(items[rightpos], items[childpos]) <= 0)
                     childpos = rightpos;
-                //move child up the tree
+                //将子项目添加到树上
                 items[pos] = items[childpos];
                 pos = childpos;
-                //move down the tree and repeat.
+                //沿着树向下移动并重复
                 childpos = 2 * pos + 1;
             }
-            //the child position for the new item.
+            //新项目的子位置
             items[pos] = newitem;
             SiftDown(startpos, pos);
         }

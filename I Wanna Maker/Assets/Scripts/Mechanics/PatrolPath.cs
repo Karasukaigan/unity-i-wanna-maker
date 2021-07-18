@@ -3,17 +3,18 @@ using UnityEngine;
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// This component is used to create a patrol path, two points which enemies will move between.
+    /// 该组件用于创建巡逻路径，敌人将在两个点之间移动。
+    /// 这个类来自平台游戏Microgame模板。未使用。
     /// </summary>
     public partial class PatrolPath : MonoBehaviour
     {
         /// <summary>
-        /// One end of the patrol path.
+        /// 巡逻路线的起始坐标和结束坐标。
         /// </summary>
         public Vector2 startPosition, endPosition;
 
         /// <summary>
-        /// Create a Mover instance which is used to move an entity along the path at a certain speed.
+        /// 创建一个Mover实例，用于以特定速度沿路径移动实体。
         /// </summary>
         /// <param name="speed"></param>
         /// <returns></returns>

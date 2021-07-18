@@ -5,7 +5,8 @@ namespace Platformer.Mechanics
     public partial class PatrolPath
     {
         /// <summary>
-        /// The Mover class oscillates between start and end points of a path at a defined speed.
+        /// Mover类用来以指定速度在路径的起点和终点之间巡回。
+        /// 这个类来自平台游戏Microgame模板。未使用。
         /// </summary>
         public class Mover
         {
@@ -22,7 +23,7 @@ namespace Platformer.Mechanics
             }
 
             /// <summary>
-            /// Get the position of the mover for the current frame.
+            /// 获取当前帧Mover的位置。
             /// </summary>
             /// <value></value>
             public Vector2 Position

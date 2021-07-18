@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Platformer.Gameplay
 {
     /// <summary>
-    /// Fired when a player collides with a token.
+    /// 当玩家与金币碰撞时触发。未使用。
     /// </summary>
     /// <typeparam name="PlayerCollision"></typeparam>
     public class PlayerTokenCollision : Simulation.Event<PlayerTokenCollision>

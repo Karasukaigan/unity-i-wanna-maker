@@ -5,11 +5,7 @@ namespace Platformer.Core
     public static partial class Simulation
     {
         /// <summary>
-        /// An event is something that happens at a point in time in a simulation.
-        /// The Precondition method is used to check if the event should be executed,
-        /// as conditions may have changed in the simulation since the event was 
-        /// originally scheduled.
-        /// It comes from the Platformer Microgame template.
+        /// Event是在模拟中的某个时间点发生的事情。Precondition()用于检查是否应该执行该事件。这个类来自平台游戏Microgame模板。
         /// </summary>
         /// <typeparam name="Event"></typeparam>
         public abstract class Event : System.IComparable<Event>
@@ -32,8 +28,7 @@ namespace Platformer.Core
             }
 
             /// <summary>
-            /// This method is generally used to set references to null when required.
-            /// It is automatically called by the Simulation when an event has completed.
+            /// Cleanup()通常用于在需要时将引用设置为null。当事件完成时，Simulation会自动调用它。
             /// </summary>
             internal virtual void Cleanup()
             {
@@ -42,9 +37,7 @@ namespace Platformer.Core
         }
 
         /// <summary>
-        /// Event<T> adds the ability to hook into the OnExecute callback
-        /// whenever the event is executed. Use this class to allow functionality
-        /// to be plugged into your application with minimal or zero configuration.
+        /// Event<T>添加了在执行事件时挂钩OnExecute回调的功能。使用此类允许以最少或零配置将功能插入到应用程序中。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public abstract class Event<T> : Event where T : Event<T>

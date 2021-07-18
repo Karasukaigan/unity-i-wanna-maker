@@ -1,26 +1,27 @@
 using Platformer.Mechanics;
+using Platformer.UI;
 using UnityEngine;
 
 namespace Platformer.UI
 {
     /// <summary>
-    /// The MetaGameController is responsible for switching control between the high level
-    /// contexts of the application, eg the Main Menu and Gameplay systems.
+    /// 用于主菜单和游戏系统间的切换控制。
+    /// 这个类来自平台游戏Microgame模板。
     /// </summary>
     public class MetaGameController : MonoBehaviour
     {
         /// <summary>
-        /// The main UI object which used for the menu.
+        /// 用于菜单的主要UI对象。
         /// </summary>
         public MainUIController mainMenu;
 
         /// <summary>
-        /// A list of canvas objects which are used during gameplay (when the main ui is turned off)
+        /// 在游戏过程中使用的画布对象列表（当主用户界面关闭时）
         /// </summary>
         public Canvas[] gamePlayCanvasii;
 
         /// <summary>
-        /// The game controller.
+        /// 游戏控制器。
         /// </summary>
         public GameController gameController;
 
@@ -32,7 +33,7 @@ namespace Platformer.UI
         }
 
         /// <summary>
-        /// Turn the main menu on or off.
+        /// 打开或关闭主菜单。
         /// </summary>
         /// <param name="show"></param>
         public void ToggleMainMenu(bool show)
@@ -67,6 +68,5 @@ namespace Platformer.UI
                 ToggleMainMenu(show: !showMainCanvas);
             }
         }
-
     }
 }

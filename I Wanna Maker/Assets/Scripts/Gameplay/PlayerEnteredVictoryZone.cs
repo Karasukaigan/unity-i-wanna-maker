@@ -4,10 +4,9 @@ using Platformer.Model;
 
 namespace Platformer.Gameplay
 {
-
     /// <summary>
-    /// This event is triggered when the player character enters a trigger with a VictoryZone component.
-    /// It comes from the Platformer Microgame template.
+    /// 当玩家进入VictoryZone时触发。
+    /// 若要使用，需要给空物体添加VictoryZone脚本和碰撞器。
     /// </summary>
     /// <typeparam name="PlayerEnteredVictoryZone"></typeparam>
     public class PlayerEnteredVictoryZone : Simulation.Event<PlayerEnteredVictoryZone>

@@ -5,8 +5,8 @@ using Platformer.Model;
 namespace Platformer.Gameplay
 {
     /// <summary>
-    /// Fired when a player enters a trigger with a DeathZone component.
-    /// It comes from the Platformer Microgame template.
+    /// 当玩家进入DeathZone时触发。
+    /// 若要使用，需要给空物体添加DeathZone脚本和碰撞器。
     /// </summary>
     /// <typeparam name="PlayerEnteredDeathZone"></typeparam>
     public class PlayerEnteredDeathZone : Simulation.Event<PlayerEnteredDeathZone>
@@ -17,7 +17,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            Simulation.Schedule<PlayerDeath>(0);
+            Simulation.Schedule<PlayerDeath>(0); //玩家进入DeathZone时死亡
         }
     }
 }

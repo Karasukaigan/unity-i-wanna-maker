@@ -4,37 +4,40 @@ using UnityEngine;
 namespace Platformer.Model
 {
     /// <summary>
-    /// The main model containing needed data to implement a platformer style 
-    /// game. This class should only contain data, and methods that operate 
-    /// on the data. It is initialised with data in the GameController class.
+    /// 包含实现平台风格游戏所需数据的主模型。这个类应该只包含数据和对数据进行操作的方法。它使用GameController类中的数据进行初始化。
+    /// 这个类来自平台游戏Microgame模板。
     /// </summary>
     [System.Serializable]
     public class PlatformerModel
     {
         /// <summary>
-        /// The virtual camera in the scene.
+        /// 场景中的虚拟摄像机。
         /// </summary>
+        [Tooltip("虚拟摄像机，可留空。")]
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
 
         /// <summary>
-        /// The main component which controls the player sprite, controlled by the user.
+        /// 玩家，通常为Player。
         /// </summary>
+        [Tooltip("玩家，通常为Player。")]
         public PlayerController player;
 
         /// <summary>
-        /// The spawn point in the scene.
+        /// 出生点，通常为SpawnPoint。
         /// </summary>
+        [Tooltip("出生点，通常为SpawnPoint。")]
         public Transform spawnPoint;
 
         /// <summary>
-        /// A global jump modifier applied to all initial jump velocities.
+        /// 应用于所有初始跳跃速度的全局跳跃系数，推荐值为0.47。
         /// </summary>
-        //public float jumpModifier = 1.5f;
+        [Tooltip("应用于所有初始跳跃速度的全局跳跃修改器，推荐值为0.47。")]
         public float jumpModifier = 0.47f;
 
         /// <summary>
-        /// A global jump modifier applied to slow down an active jump when the user releases the jump input.
+        /// 松开跳跃键时的跳跃减缓系数，推荐值为0.2。
         /// </summary>
+        [Tooltip("松开跳跃键时的跳跃减缓系数，推荐值为0.2。")]
         public float jumpDeceleration = 0.2f;
 
     }

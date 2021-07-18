@@ -1,11 +1,11 @@
 ﻿using Platformer.Gameplay;
-using UnityEngine;
 using static Platformer.Core.Simulation;
+using UnityEngine;
 
 namespace Platformer.Mechanics
 {
     /// <summary>
-    /// A simple controller for enemies. Provides movement control over a patrol path.
+    /// 一个简单的敌人控制器。提供对巡逻路径的移动控制。这个类来自平台游戏Microgame模板。未使用。
     /// </summary>
     [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
     public class EnemyController : MonoBehaviour
@@ -29,6 +29,7 @@ namespace Platformer.Mechanics
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        //发生碰撞时执行的操作
         void OnCollisionEnter2D(Collision2D collision)
         {
             var player = collision.gameObject.GetComponent<PlayerController>();

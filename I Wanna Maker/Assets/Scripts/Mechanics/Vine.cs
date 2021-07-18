@@ -1,8 +1,12 @@
-﻿using UnityEngine;using Platformer.Model;
+﻿using UnityEngine;
+using Platformer.Model;
 using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
+    /// <summary>
+    /// 藤蔓的类，通常被添加在藤蔓的Tilemap上。
+    /// </summary>
     public class Vine : MonoBehaviour
     {
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();

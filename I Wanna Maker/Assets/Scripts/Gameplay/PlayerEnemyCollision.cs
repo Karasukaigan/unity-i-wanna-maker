@@ -5,10 +5,8 @@ using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
 {
-
     /// <summary>
-    /// Fired when a Player collides with an Enemy.
-    /// It comes from the Platformer Microgame template. No longer used.
+    /// 玩家和敌人相碰撞时执行的操作。这个类来自平台游戏Microgame模板。未使用。
     /// </summary>
     /// <typeparam name="EnemyCollision"></typeparam>
     public class PlayerEnemyCollision : Simulation.Event<PlayerEnemyCollision>
