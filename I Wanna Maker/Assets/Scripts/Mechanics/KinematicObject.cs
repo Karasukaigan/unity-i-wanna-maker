@@ -157,7 +157,7 @@ namespace Platformer.Mechanics
             if (distance > minMoveDistance)
             {
                 //检查是否在当前行进方向上碰到东西
-                var count = body.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+                var count = body.Cast(move, contactFilter, hitBuffer, distance + shellRadius); //计算和几个物体发生碰撞
                 for (var i = 0; i < count; i++)
                 {
                     var currentNormal = hitBuffer[i].normal;

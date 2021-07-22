@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - Ground
+  - MobilePlatform
   layers:
   - Default
   - TransparentFX

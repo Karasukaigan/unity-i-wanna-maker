@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 8647922563502363827, guid: 3ed55b7af0116d94cb64440e2d213d40,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ed55b7af0116d94cb64440e2d213d40, type: 3}
@@ -377,12 +377,13 @@ GameObject:
   - component: {fileID: 327473800}
   - component: {fileID: 327473799}
   - component: {fileID: 327473801}
-  - component: {fileID: 327473805}
   - component: {fileID: 327473803}
+  - component: {fileID: 327473804}
   - component: {fileID: 327473802}
+  - component: {fileID: 327473805}
   m_Layer: 0
   m_Name: MobilePlatform101
-  m_TagString: Untagged
+  m_TagString: MobilePlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,13 +483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1979c13f97b4f614ea3cc54636a8b9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model:
-    virtualCamera: {fileID: 0}
-    player: {fileID: 498259587}
-    spawnPoint: {fileID: 2361704089116330219}
-    jumpModifier: 0.47
-    jumpDeceleration: 0.2
-  move: {x: 0, y: 0, z: 0}
   maxSpeed: 5
   startX: -5
   endX: 6
@@ -504,9 +498,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.032731056}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -517,9 +511,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.4345379}
   m_EdgeRadius: 0
---- !u!50 &327473805
+--- !u!50 &327473804
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -527,19 +521,38 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327473798}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!251 &327473805
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327473798}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 90
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &458258918
 GameObject:
   m_ObjectHideFlags: 0
@@ -17803,7 +17816,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1fe2e3fc7e113fe4f8a1fdda2746bf57, type: 3}
+  m_Sprite: {fileID: 4453456352477128398, guid: 5ca60e169b897d14c95b2b9426e02d24,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17851,6 +17865,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 2361704089116330219}
     jumpModifier: 0.47
     jumpDeceleration: 0.2
+  checkpointNumber: 1
   mediumIsAvailable: 1
   hardIsAvailable: 0
   veryHardIsAvailable: 0
@@ -17949,6 +17964,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 2361704089116330219}
     jumpModifier: 0.47
     jumpDeceleration: 0.2
+  checkpointNumber: 0
   mediumIsAvailable: 1
   hardIsAvailable: 1
   veryHardIsAvailable: 1
@@ -18013,7 +18029,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1fe2e3fc7e113fe4f8a1fdda2746bf57, type: 3}
+  m_Sprite: {fileID: 4453456352477128398, guid: 5ca60e169b897d14c95b2b9426e02d24,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -18089,7 +18106,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1fe2e3fc7e113fe4f8a1fdda2746bf57, type: 3}
+  m_Sprite: {fileID: 4453456352477128398, guid: 5ca60e169b897d14c95b2b9426e02d24,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -18137,6 +18155,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 2361704089116330219}
     jumpModifier: 0.47
     jumpDeceleration: 0.2
+  checkpointNumber: 2
   mediumIsAvailable: 1
   hardIsAvailable: 1
   veryHardIsAvailable: 0

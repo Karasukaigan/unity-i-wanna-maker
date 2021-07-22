@@ -104,7 +104,6 @@ namespace Platformer.Mechanics
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        //public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -333,7 +332,6 @@ namespace Platformer.Mechanics
         }
 
         /// <summary>
-        /// Teleport to some position.
         /// 传送到某个位置。
         /// </summary>
         /// <param name="targetPosition">传送的目标坐标。</param>
@@ -350,6 +348,5 @@ namespace Platformer.Mechanics
         {
             collision.SendMessage("IsPlayer", true, SendMessageOptions.DontRequireReceiver);
         }
-
     }
 }

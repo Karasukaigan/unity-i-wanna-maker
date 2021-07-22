@@ -21,7 +21,6 @@ namespace Platformer.Mechanics
                 player.vinePosition = player.transform.position.x;
                 player.animator.SetBool("onVine", true);
                 player.onVine = true;
-                Debug.Log("velocity.x:"+player.velocity.x+", velocity.y:"+player.velocity.y+", onVine:"+player.onVine);
             }
         }
     }

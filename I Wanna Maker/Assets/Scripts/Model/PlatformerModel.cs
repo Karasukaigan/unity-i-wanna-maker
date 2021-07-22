@@ -39,6 +39,5 @@ namespace Platformer.Model
         /// </summary>
         [Tooltip("松开跳跃键时的跳跃减缓系数，推荐值为0.2。")]
         public float jumpDeceleration = 0.2f;
-
     }
 }

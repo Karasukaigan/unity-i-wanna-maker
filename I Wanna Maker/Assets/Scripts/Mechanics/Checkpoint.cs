@@ -19,6 +19,11 @@ namespace Platformer.Mechanics
         /// </summary>
         private int gameDifficulty; 
 
+        /// <summary>
+        /// 存档点编号，从0开始。
+        /// </summary>
+        [Tooltip("存档点编号。")]
+        public int checkpointNumber = 0;
         //设置当前存档点在各难度下是否开放存档功能
         [Tooltip("Medium难度下是否开放。")]
         public bool mediumIsAvailable = true;
@@ -69,12 +74,20 @@ namespace Platformer.Mechanics
         private int archiveNumber;
 
         private void Start() {
+            animator = GetComponent<Animator>();
+
             archiveNumber = PlayerPrefs.GetInt("CurrentArchive", 0); //获取存档编号
             gameDifficulty = PlayerPrefs.GetInt("GameDifficulty" + archiveNumber, 0); //获取当前存档的游戏难度
 
             if ((gameDifficulty == 0 && mediumIsAvailable) || (gameDifficulty == 1 && hardIsAvailable) || (gameDifficulty == 2 && veryHardIsAvailable) || (gameDifficulty == 3 && impossibleIsAvailable))
             {
                 isAvailable = true; //设置为可用
+            }
+
+            //如果是已经存过档的检查点，则顶上的文字从“WUSS”变成“SAVE”
+            if (checkpointNumber == PlayerPrefs.GetInt("CurrentCheckpoint" + archiveNumber, 0))
+            {
+                animator.SetBool("isSaved", true);
             }
         }
 
@@ -86,8 +99,6 @@ namespace Platformer.Mechanics
         {
             if (isAvailable)
             {
-                animator = GetComponent<Animator>();
-
                 beShot = true;
                 lightTime = 1f; //重置计时器，用来维持点亮状态
 
@@ -105,6 +116,7 @@ namespace Platformer.Mechanics
                 PlayerPrefs.SetFloat("PlayerSpawnX" + archiveNumber, playerSpawnX);
                 PlayerPrefs.SetFloat("PlayerSpawnY" + archiveNumber, playerSpawnY);
                 PlayerPrefs.SetFloat("PlayerSpawnZ" + archiveNumber, 0f);
+                PlayerPrefs.SetInt("CurrentCheckpoint" + archiveNumber, checkpointNumber);
 
                 //更新摄像机位置
                 PlayerPrefs.SetFloat("cameraPointPositionX" + archiveNumber, cameraPointPosition.position.x);
@@ -128,6 +140,7 @@ namespace Platformer.Mechanics
                 beShot = false;
                 lightTime = 1f;
                 animator.SetBool("beShot", false); 
+                Debug.Log("与移动平台碰撞");
             }
         }
     }

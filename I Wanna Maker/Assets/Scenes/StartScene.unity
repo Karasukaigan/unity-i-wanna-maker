@@ -3490,9 +3490,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   isHorizontal: 0
+  isRight: 0
   isVertical: 1
   isDown: 1
-  isRight: 0
 --- !u!1 &1632660533
 GameObject:
   m_ObjectHideFlags: 0

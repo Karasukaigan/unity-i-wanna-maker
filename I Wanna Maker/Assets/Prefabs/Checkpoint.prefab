@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1fe2e3fc7e113fe4f8a1fdda2746bf57, type: 3}
+  m_Sprite: {fileID: 4453456352477128398, guid: 5ca60e169b897d14c95b2b9426e02d24,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,6 +116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b6e75b9548f5f4486bd3a85968ec85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model:
+    virtualCamera: {fileID: 0}
+    player: {fileID: 0}
+    spawnPoint: {fileID: 0}
+    jumpModifier: 0.47
+    jumpDeceleration: 0.2
+  checkpointNumber: 0
+  mediumIsAvailable: 1
+  hardIsAvailable: 1
+  veryHardIsAvailable: 1
+  impossibleIsAvailable: 1
   offsetX: 0
   offsetY: 0
 --- !u!61 &4818485085858590973

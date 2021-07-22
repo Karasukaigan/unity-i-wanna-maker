@@ -168,14 +168,21 @@ MonoBehaviour:
   minGroundNormalY: 0.65
   gravityModifier: 3
   velocity: {x: 0, y: 0}
-  jumpAudio: {fileID: 0}
-  doubleJumpAudio: {fileID: 0}
-  shootAudio: {fileID: 0}
-  respawnAudio: {fileID: 0}
-  ouchAudio: {fileID: 0}
-  gameOverUI: {fileID: 0}
-  head: {fileID: 0}
-  blood: []
+  onVine: 0
+  vinePosition: 0
+  inWater: 0
+  jumpAudio: {fileID: 8300000, guid: 73e09d96f810b3d44a50c6ea8d6e08dd, type: 3}
+  doubleJumpAudio: {fileID: 8300000, guid: 83c7e5a046e977e4497a90d975f368b6, type: 3}
+  shootAudio: {fileID: 8300000, guid: 9c9e462245f2e124fa07244f13f7fbc2, type: 3}
+  respawnAudio: {fileID: 8300000, guid: 8002f56706b2e3940bf75b6bd6c3c84a, type: 3}
+  ouchAudio: {fileID: 8300000, guid: bbb70ee0d1e467746bff1be50eed5552, type: 3}
+  gameOverUI: {fileID: 6400063281806032974, guid: 4624c2fdd399c3242a15b74968e1d876,
+    type: 3}
+  head: {fileID: 7607163434053848580, guid: e23178efddec149418ee565e6b5e6235, type: 3}
+  blood:
+  - {fileID: 3086505349293384858, guid: f5438b53ab681c647ad02f8f62cdfee9, type: 3}
+  - {fileID: 3784511661938075697, guid: 580537ef65292f84baa03815ec6ca6d5, type: 3}
+  - {fileID: 2226396430221104657, guid: 6e5022c1c4928124598b63ad7a061314, type: 3}
   playerDeadTimer: 0
   maxSpeed: 6
   jumpTakeOffSpeed: 20
